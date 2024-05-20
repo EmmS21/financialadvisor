@@ -67,6 +67,8 @@ This module aims to streamline the process of obtaining and delivering AI-driven
 from dagger import dag, function, object_type, Secret
 import urllib.parse
 import json
+import asyncio
+import os
 
 @object_type
 class Financialadvisor:
@@ -103,17 +105,16 @@ class Financialadvisor:
         return result
     
 if __name__ == "__main__":
-    import asyncio
 
     advisor = Financialadvisor()
     asyncio.run(advisor.run_pipeline(
-        apiKey=Secret('API_KEY'),
-        sheet=Secret('SHEET_ID'),
-        connection=Secret('DB_CONNECTION'),
-        hftoken=Secret('HF_TOKEN'),
-        openai=Secret('OPENAI_KEY'),
-        textBelt=Secret('TEXTBELT_KEY'),
-        mobileNums='+15162341744,+15512259418',
-        database='financial_data',
-        collection='transactions'
+        apiKey=Secret(os.getenv('API_KEY')),
+        sheet=Secret(os.getenv('SHEET_ID')),
+        connection=Secret(os.getenv('DB_CONNECTION')),
+        hftoken=Secret(os.getenv('HF_TOKEN')),
+        openai=Secret(os.getenv('OPENAI_KEY')),
+        textBelt=Secret(os.getenv('TEXTBELT_KEY')),
+        mobileNums=os.getenv('MOBILE_NUMS'),
+        database=os.getenv('DATABASE'),
+        collection=os.getenv('COLLECTION')
     ))
