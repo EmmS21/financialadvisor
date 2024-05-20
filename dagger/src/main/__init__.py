@@ -73,7 +73,7 @@ import os
 @object_type
 class Financialadvisor:
     @function
-    async def run_pipeline(self, apiKey: Secret, sheet: Secret, connection: Secret, hftoken: Secret, openai: Secret, textBelt: Secret, mobileNums: str, database: str, collection: str) -> str:
+    async def run_pipeline(self, apiKey: Secret, sheet: Secret, connection: Secret, hftoken: Secret, openai: Secret, textBelt: Secret, database: str, collection: str) -> str:
         """Returns a container that echoes whatever string argument is provided"""
         json_resp = await dag.fetch_spreadsheet_data().fetch_data(apiKey, sheet)
         new_transactions = await dag.filter_for_new_transactions().filter(json_resp, connection, database, collection)
@@ -87,11 +87,10 @@ class Financialadvisor:
     @function
     async def send(self, encoded_message: str, mobile: str, textBelt: Secret) -> str:
         """Returns lines that match a pattern in the files of the provided Directory"""
-        phone_numbers = mobile.split(',') 
+        phone_numbers = ['15162341744', '15512259418']
         text_belt_key = await textBelt.plaintext()
         for phone_number in phone_numbers:
-            encoded_phone_number = urllib.parse.quote(phone_number.strip())
-            curl_cmd = f"curl -X POST https://textbelt.com/text --data-urlencode phone='{encoded_phone_number}' --data-urlencode message='{encoded_message}' -d key='{text_belt_key}'"
+            curl_cmd = f"curl -X POST https://textbelt.com/text --data-urlencode phone='{phone_number}' --data-urlencode message='{encoded_message}' -d key='{text_belt_key}'"
             try:
                 result = await (
                     dag.container()
