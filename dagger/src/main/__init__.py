@@ -83,9 +83,9 @@ class Financialadvisor:
         generate_resp = await dag.get_advice().generate(get_data, openai, connection)
         resp_dict = json.loads(generate_resp).get('advice')
         encoded_message = urllib.parse.quote(resp_dict)
-        return await self.send(encoded_message, mobileNums, textBelt)
+        return await self.send(encoded_message, textBelt)
     @function
-    async def send(self, encoded_message: str, mobile: str, textBelt: Secret) -> str:
+    async def send(self, encoded_message: str, textBelt: Secret) -> str:
         """Returns lines that match a pattern in the files of the provided Directory"""
         phone_numbers = ['15162341744', '15512259418']
         text_belt_key = await textBelt.plaintext()
@@ -114,7 +114,6 @@ if __name__ == "__main__":
         hftoken=Secret(os.getenv('HF_TOKEN')),
         openai=Secret(os.getenv('OPENAI_KEY')),
         textBelt=Secret(os.getenv('TEXTBELT_KEY')),
-        mobileNums=os.getenv('MOBILE_NUMS'),
         database=os.getenv('DATABASE'),
         collection=os.getenv('COLLECTION')
     ))
