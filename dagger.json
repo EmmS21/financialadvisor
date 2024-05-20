@@ -1,0 +1,32 @@
+{
+  "name": "financialadvisor",
+  "sdk": "python",
+  "dependencies": [
+    {
+      "name": "getAdvice",
+      "source": "github.com/EmmS21/daggerverse/getAdvice@50e158a644959653ec0339e66cbdd7268a35f55c"
+    },
+    {
+      "name": "FetchSpreadsheetData",
+      "source": "github.com/EmmS21/daggerverse/fetchSpreadsheetData@678ae5ba45bae707d1081cda300919b3ff77256c"
+    },
+    {
+      "name": "categorizeExpenses",
+      "source": "github.com/EmmS21/daggerverse/categorizeExpenses@38a944be8fb2b71336dee507f6088822ec5f32f5"
+    },
+    {
+      "name": "filterForNewTransactions",
+      "source": "github.com/EmmS21/daggerverse/filterForNewTransactions@38a944be8fb2b71336dee507f6088822ec5f32f5"
+    },
+    {
+      "name": "getFromMongo",
+      "source": "github.com/EmmS21/daggerverse/getFromMongo@93c85c21fd39b24a8691ad7a6a47f3c94fdde1d5"
+    },
+    {
+      "name": "writeToMongo",
+      "source": "github.com/EmmS21/daggerverse/writeToMongo@0db57c7b48700cabb0e6e500f5af897ffd9f03e8"
+    }
+  ],
+  "source": "dagger",
+  "engineVersion": "v0.11.3"
+}
