@@ -24,6 +24,6 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           TEXTBELT_KEY: ${{ secrets.TEXTBELT_KEY }}
-          MOBILE_NUMS: '+15162341744,+15512259418'
+          MOBILE_NUMS: '15162341744,15512259418'
           DATABASE: 'financial_data'
           COLLECTION: 'transactions'
