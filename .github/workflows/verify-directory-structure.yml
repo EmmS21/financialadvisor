@@ -1,0 +1,17 @@
+name: Verify Directory Structure
+
+on:
+  workflow_dispatch:  # Allows the workflow to be triggered manually
+
+jobs:
+  list-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: List root directory contents
+        run: ls -R
+      
+      - name: List contents of financialadvisor/dagger/src/main
+        run: ls -R financialadvisor/dagger/src/main
