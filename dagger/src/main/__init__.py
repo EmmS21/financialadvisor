@@ -101,3 +101,19 @@ class Financialadvisor:
             except Exception as e:
                 raise RuntimeError(f"Error sending message to {phone_number}: {e}")
         return result
+    
+if __name__ == "__main__":
+    import asyncio
+
+    advisor = Financialadvisor()
+    asyncio.run(advisor.run_pipeline(
+        apiKey=Secret('API_KEY'),
+        sheet=Secret('SHEET_ID'),
+        connection=Secret('DB_CONNECTION'),
+        hftoken=Secret('HF_TOKEN'),
+        openai=Secret('OPENAI_KEY'),
+        textBelt=Secret('TEXTBELT_KEY'),
+        mobileNums='+15162341744,+15512259418',
+        database='financial_data',
+        collection='transactions'
+    ))
