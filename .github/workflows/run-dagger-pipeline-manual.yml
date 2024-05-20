@@ -15,7 +15,7 @@ jobs:
         with:
           verb: call 
           module: github.com/EmmS21/financialadvisor
-          args: run-pipeline --apiKey=env:API_KEY --sheet=env:SHEET_ID --connection=env:DB_CONNECTION --hftoken=env:HF_TOKEN --openai=env:OPENAI_KEY --textBelt=env:TEXTBELT_KEY --mobileNums=env:MOBILE_NUMS --database=env:DATABASE --collection=env:COLLECTION
+          args: run-pipeline --apiKey=env:API_KEY --sheet=env:SHEET_ID --connection=env:DB_CONNECTION --hftoken=env:HF_TOKEN --openai=env:OPENAI_KEY --textBelt=env:TEXTBELT_KEY --database=env:DATABASE --collection=env:COLLECTION
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
         env:
           API_KEY: ${{ secrets.API_KEY }}
@@ -24,6 +24,5 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           TEXTBELT_KEY: ${{ secrets.TEXTBELT_KEY }}
-          MOBILE_NUMS: '15162341744,15512259418'
           DATABASE: 'financial_data'
           COLLECTION: 'transactions'
