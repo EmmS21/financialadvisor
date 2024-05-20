@@ -14,7 +14,7 @@ jobs:
         uses: dagger/dagger-for-github@v5.6.0
         with:
           verb: call 
-          module: github.com/your-username/your-repo/path/to/your/module
+          module: github.com/EmmS21/financialadvisor/src/main
           args: run_pipeline
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
         env:
