@@ -102,7 +102,7 @@ class Financialadvisor:
                     raise ValueError(f"Failed to send message to {phone_number}: {result}")
             except Exception as e:
                 raise RuntimeError(f"Error sending message to {phone_number}: {e}")
-        return result, phone_numbers
+        return phone_numbers
     
 if __name__ == "__main__":
 
