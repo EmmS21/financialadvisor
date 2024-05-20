@@ -15,8 +15,8 @@ jobs:
         with:
           python-version: '3.12.1'
       
-      - name: Install the correct Dagger package
-        run: pip install dagger-io==0.11.4
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       
       - name: Run Dagger Pipeline
         run: python dagger/src/main/__init__.py
