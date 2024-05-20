@@ -15,8 +15,14 @@ jobs:
         with:
           python-version: '3.8'
       
-      - name: Install Dagger
-        run: pip install dagger
+      - name: Install Dagger CLI
+        run: |
+          cd /usr/local
+          curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.11.4 sh
+          echo 'export PATH=/usr/local/bin/dagger:$PATH' >> $GITHUB_ENV
+      
+      - name: Verify Dagger installation
+        run: dagger version
       
       - name: Run Dagger Pipeline
         run: python dagger/src/main/__init__.py
