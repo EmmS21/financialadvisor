@@ -9,17 +9,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Set up Python
-        uses: actions/setup-python@v2
+
+      - name: Dagger for GitHub
+        uses: dagger/dagger-for-github@v5.6.0
         with:
-          python-version: '3.12.1'
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      
-      - name: Run Dagger Pipeline
-        run: python dagger/src/main/__init__.py
+          verb: call 
+          module: github.com/your-username/your-repo/path/to/your/module
+          args: run_pipeline
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
         env:
           API_KEY: ${{ secrets.API_KEY }}
           SHEET_ID: ${{ secrets.SHEET_ID }}
@@ -27,6 +24,6 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           TEXTBELT_KEY: ${{ secrets.TEXTBELT_KEY }}
-          MOBILE_NUMS: '+1234567890,+0987654321'
+          MOBILE_NUMS: '+15162341744,+15512259418'
           DATABASE: 'financial_data'
           COLLECTION: 'transactions'
