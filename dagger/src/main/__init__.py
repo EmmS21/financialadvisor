@@ -90,8 +90,8 @@ class Financialadvisor:
         phone_numbers = mobile.split(',') 
         text_belt_key = await textBelt.plaintext()
         for phone_number in phone_numbers:
-            print('***', phone_number)
-            curl_cmd = f"curl -X POST https://textbelt.com/text --data-urlencode phone='{phone_number}' --data-urlencode message='{encoded_message}' -d key='{text_belt_key}'"
+            encoded_phone_number = urllib.parse.quote(phone_number.strip())
+            curl_cmd = f"curl -X POST https://textbelt.com/text --data-urlencode phone='{encoded_phone_number}' --data-urlencode message='{encoded_message}' -d key='{text_belt_key}'"
             try:
                 result = await (
                     dag.container()
